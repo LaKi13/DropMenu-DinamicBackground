@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Traning</title>
+</head>
+
+<body>
+	<style>
+		* {
+			margin: 0;
+			font-family: sans-serif;
+		}
+
+		#container {
+			background-color: #000;
+			display: flex;
+			flex-direction: column;
+			height: 100vh;
+			position: relative;
+		}
+
+		.header {
+			background-color: red;
+			display: flex;
+			justify-content: space-evenly;
+			align-items: center;
+			min-height: 50px;
+			transform: translateY(-50px);
+			transition-duration: .3s;
+		}
+
+		.header:nth-child(1) {
+			margin-left: 30px;
+		}
+
+		.header a {
+			color: #000;
+			text-decoration: none;
+			font-size: 20px;
+			line-height: 46px;
+			transition-duration: .2s;
+		}
+
+		.header a:hover {
+			border-bottom: 3px solid #000;
+		}
+
+		.height {
+			transform: translateY(0px);
+		}
+
+		.burger {
+			background-color: red;
+			border-right: 1px solid #000;
+			color: #000;
+			cursor: pointer;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 22px;
+			width: 50px;
+			height: 50px;
+			position: fixed;
+			font-weight: 700;
+			z-index: 2;
+			top: 0;
+		}
+
+		header {
+			border-bottom: 1px solid #000;
+			min-height: 50px;
+		}
+
+		h1 {
+			color: #f00;
+			font-size: 40px;
+			text-align: center;
+			margin-left: 50px;
+			margin-top: -50px;
+		}
+
+		@media (max-width: 900px) {
+			.header {
+				transform: translateX(-200px);
+				position: absolute;
+				top: 50px;
+				left: 0;
+				flex-direction: column;
+			}
+
+			.height {
+				transform: translateX(-30px);
+			}
+
+			.header a {
+				padding: 20px 30px;
+				line-height: 24px;
+			}
+
+			h1 {
+				margin-top: 0;
+			}
+		}
+
+		section {
+			background: linear-gradient(45deg, #000, #f00);
+			flex: 1;
+		}
+
+		footer {
+			background-color: #000;
+			height: 100px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		footer p {
+			color: red;
+			font-size: 40px;
+		}
+	</style>
+
+	<div id="container">
+		<header>
+			<div class="header">
+				<a href="#">some link</a>
+				<a href="#">some link</a>
+				<a href="#">some link</a>
+				<a href="#">some link</a>
+				<a href="#">some link</a>
+			</div>
+			<div class="burger"></div>
+			<h1>Some header</h1>
+		</header>
+		<section></section>
+		<footer>
+			<p>Some footer</p>
+		</footer>
+	</div>
+
+	<script>
+		const header = document.querySelector(".header");
+		const burger = document.querySelector(".burger");
+		const section = document.querySelector("section");
+		let num = 45;
+		burger.textContent = "< >";
+
+		burger.onclick = () => {
+			if (!header.classList.contains("height")) {
+				header.classList.add("height");
+				burger.textContent = "< / >";
+			} else {
+				header.classList.remove("height");
+				burger.textContent = "< >";
+			}
+		}
+
+		setInterval(() => {
+			if (num == 405) {
+				num = 45;
+			}
+
+			num += 1;
+			section.style.background = `linear-gradient(${num}deg, #000, #f00)`;
+		}, 100);
+	</script>
+</body>
+
+</html>
